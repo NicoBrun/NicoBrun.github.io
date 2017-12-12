@@ -1,0 +1,220 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<body>
+<style>
+
+body {
+    background-color: lightgray;
+}
+#map {
+  border: 2px #555;
+  width: 1100px;
+  height: 1100px;
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none;
+}
+/* Eastward tooltips */
+.d3-tip.e:after {
+  content: "\25C0";
+  margin: -4px 0 0 0;
+  top: 50%;
+  left: -8px;
+}
+</style>
+
+<div id="map"></div>
+</body>
+
+<script>
+var data =  [
+  {artist: "Nico", url: "https://www.facebook.com/images/fb_icon_325x325.png", genre:"Rock", songlist:["a","b","c"]},
+  {artist: "Otto", url: "https://images.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png", genre:"PornStep", songlist:["a","b","c"]},
+  {artist: "Yolo", url: "https://cdn4.iconfinder.com/data/icons/seo-and-data/500/pencil-gear-128.png", genre:"Swag", songlist:["a","b","c"]},
+  {artist: "John", url: "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded", genre:"Jazz", songlist:["a","b","c"]},
+  {artist: "Beyonce", url: "https://www.billboard.com/files/media/beyonce-grammys-red-carpet-billboard-1548.jpg", genre:"Beyonce", songlist:["a","b","c"]},
+]
+
+function genre2color(genre){
+  if(genre == "Rock"){
+    return "red"
+  }
+  if(genre == "PornStep"){
+    return "blue"
+  }
+  if(genre == "Beyonce"){
+    return "yellow"
+  }
+  return "black"
+}
+
+var circle_size = 20;
+
+//seting size and position
+var margin = {
+  top: -5,
+  right: -5,
+  bottom: -5,
+  left: -5
+};
+var width = 500 - margin.left - margin.right,
+height = 500 - margin.top - margin.bottom;
+
+//force
+var force = d3.layout.force()
+.charge(-200)
+.linkDistance(150)
+.size([width + margin.left + margin.right, height + margin.top + margin.bottom]);
+
+//zoom
+var zoom = d3.behavior.zoom()
+.scaleExtent([1, 10])
+.on("zoom", zoomed);
+
+//drag
+var drag = d3.behavior.drag()
+.origin(function(d) {
+  return d;
+})
+.on("dragstart", dragstarted)
+.on("drag", dragged)
+.on("dragend", dragended);
+
+//main call
+var svg = d3.select("#map").append("svg")
+.attr("width", width + margin.left + margin.right)
+.attr("height", height + margin.top + margin.bottom)
+.append("g")
+.attr("transform", "translate(" + margin.left + "," + margin.right + ")")
+.call(zoom)
+
+//create tip for elements
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .direction("e")
+  .offset([0, circle_size/2])
+  .html(function(d) {
+    //iterate over all the array elements
+    var myString = "";
+    var i = 0;
+    while(i<3){
+       myString = myString + ("<p>" + d.songlist[i] + "</p>");
+       i++;
+    }
+    return "<strong>Genre:</strong> <span style='color:lightgray'>" + d.genre + "</span>" + myString;
+  })
+svg.call(tip);
+
+//force
+force
+.nodes(data)
+.start();
+
+//create node in function of data
+var container = svg.append("g");
+var node = container.append("g")
+.attr("class", "nodes")
+.selectAll(".node")
+.data(data)
+.enter().append("g")
+.attr("class", "node")
+.call(drag);
+
+//represent node by circle
+node.append("circle")
+.attr("r", function(d) {
+  d.radius =  circle_size;
+  return d.radius;
+})
+.attr("class", "logo")
+.style("fill", "transparent")
+.style("stroke", function(d) {
+  return genre2color(d.genre);
+})
+.style("stroke-width", 1.2);
+
+//add images
+node.append("clipPath")
+.attr('id', function(d, i) {
+  return "clip" + i
+})
+.append("circle")
+.attr("class", "clip-path")
+.attr("r", circle_size);
+
+node.append("svg:image")
+.attr("class", "circle")
+.attr("xlink:href", d => d.url)
+.attr("clip-path", function(d, i) {
+  return "url(#clip" + i + ")"
+})
+.attr("x", function(d) {
+  return -d.radius;
+})
+.attr("y", function(d) {
+  return -d.radius;
+})
+.attr("width", function(d) {
+  return d.radius * 2;
+})
+.attr("height", function(d) {
+  return d.radius * 2;
+});
+
+//text over the nodes
+node.append("text")
+.attr("x", 0)
+.attr("y", -(circle_size+2))
+.style("opacity", "1")
+.html(function(d) {
+  return d.artist
+});
+
+//force
+force.on("tick", function() {
+  node.attr("transform", function(d) {
+    return "translate(" + d.x + "," + d.y + ")";
+  });
+});
+
+//activate tip over nodes
+node.on('mouseover', tip.show)
+      .on('mouseout', tip.hide);
+
+//zoom
+function zoomed() {
+  container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
+
+//dragging
+function dragstarted(d) {
+  d3.event.sourceEvent.stopPropagation();
+
+  d3.select(this).classed("dragging", true);
+  force.start();
+}
+
+function dragged(d) {
+  d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+}
+
+function dragended(d) {
+  d3.select(this).classed("dragging", false);
+}
+</script>
