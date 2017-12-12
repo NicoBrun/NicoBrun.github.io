@@ -13,7 +13,7 @@
   //https://bl.ocks.org/mbostock/7607999
   //http://plnkr.co/edit/QR4rL5QlWF5fK3mI1nf8?p=preview
   //http://plnkr.co/edit/cVaILhLVwAumWr5QEvSW?p=preview
-    var diameter = 700;
+    var diameter = 900;
     var radius = diameter / 2;
     var margin = 50;
 
@@ -72,26 +72,28 @@
       //  d.target = isNaN(d.target) ? d.target : graph.nodes[d.target];
       //});
 
-      var edges = [];
-      graph.links.forEach(function(e) {
-        var sourceNode = graph.data.filter(function(n) {
-          return n.year === e.source;
-        })[0],
-        targetNode = graph.data.filter(function(n) {
-            return n.year === e.target;
-        })[0];
+      var links = [];
 
-        edges.push({
-              source: sourceNode,
-              target: targetNode,
-              value: e.value
-        });
+      graph.data.forEach(function(e) {
+        var edgesList = e.edges;
+        edgesList.forEach(function(f){
+          targetNodeName = f[0];
+          targetNode = graph.data.filter(function(n) {
+              return n.year === targetNodeName;
+          })[0];
+          if(f[1]>0){
+          links.push({
+                source: e,
+                target: targetNode,
+                value: f[1]
+            });}
+          });
         });
 
       // calculate node positions
       circleLayout(graph.data);
 
-      drawCurves(edges);
+      drawCurves(links);
       // draw nodes last
       drawNodes(graph.data);
       // draw edges first
@@ -132,7 +134,7 @@
           return d.year;
         })
         .attr("genre", function(d, i) {
-          return d.mainGenre;
+          return d.dom_genre;
         })
         .attr("cx", function(d, i) {
           return d.x;
@@ -142,7 +144,7 @@
         })
         .attr("r", 8)
         .style("fill", function(d, i) {
-          return color(d.mainGenre);
+          return color(d.dom_genre);
         })
         .on("mouseover", mouseovered)
         .on("mouseout", mouseouted);
@@ -181,6 +183,17 @@
               y: Math.round(d.source.y)
             }];
             return `M${lineData[0].x},${lineData[0].y}C${lineData[1].x},${lineData[1].y},${lineData[2].x},${lineData[2].y},${lineData[3].x},${lineData[3].y} `;
+          })
+          .attr("stroke", function(d){
+            var val = d.value;
+            r = 200-val*200/10;
+            g = 200-val*200/10;
+            b = 200-val*200/10;
+            return "rgb("+r+","+g+","+b+")";
+          })
+          .attr("stroke-width", function(d){
+            var val = d.value;
+            return 0.20*val+"px";
           });
       }
   </script>
@@ -189,8 +202,7 @@
 <body>
   <div align="center" id="circle"></div>
   <script>
-    d3.json("my.json", drawGraph);
+    d3.json("lvl0.json", drawGraph);
   </script>
 </body>
-
 </html>
