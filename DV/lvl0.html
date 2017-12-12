@@ -5,9 +5,10 @@
   <link rel="icon" type="image/png" href="//static.epfl.ch/v0.26.1/favicon.png" />
   <!-- JavaScript Libraries //-->
   <script src="http://d3js.org/d3.v3.min.js"></script>
-
-  <link href="style.css" rel="stylesheet" type="text/css">
-
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="lvl2.js"></script>
+    <link href="styleLvl0.css" rel="stylesheet" type="text/css">
+    <link href="styleLvl2.css" rel="stylesheet" type="text/css">
   <script>
   //http://bl.ocks.org/sjengle/5432087
   //https://bl.ocks.org/mbostock/7607999
@@ -163,6 +164,7 @@
 
       nod.attr("r", 14);
       //nod.style("fill","rgb(255,0,0)");
+        /*
       d3.selectAll("link")
       .classed("link--target", function(l) { if (l.target === nod) return l.source.source = true; })
       .classed("link--source", function(l) { if (l.source === nod) return l.target.target = true; })
@@ -172,7 +174,7 @@
       d3.selectAll("node")
       .classed("node--target", true)
       .classed("node--source", true);
-
+      */
 
 
 
@@ -215,8 +217,9 @@
       .style("pointer-events","none")
       //remove the tooltip
       d3.select("#tooltip").remove();
-      //create the lvl1
-      createLvl1(year,x,y);
+      //create the next lvl
+      //todo need svg parameter to draw in
+      //createLvl2Graph(year,"Rock");
     }
 
     //unzoom into the whole circle
