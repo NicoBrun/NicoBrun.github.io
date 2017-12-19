@@ -1,0 +1,23 @@
+.pie {
+  margin: 20px;
+}
+
+.pie * { transition: all ease 0.5s; }
+
+.pie text {
+  font-family: "Verdana";
+  fill: #888;
+}
+
+.pie .name-text{
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.pie .value-text{
+  font-size:0.7em;
+}
+
+.text-group {
+  opacity: 1;
+}

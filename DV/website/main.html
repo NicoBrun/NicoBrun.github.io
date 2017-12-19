@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <!-- JavaScript Libraries -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <!-- Individual script for each level -->
+  <script src="../scripts/lvl0.js"></script>
+  <script src="../scripts/lvl1.js"></script>
+  <script src="../scripts/lvl2.js"></script>
+  <script src="../scripts/navtransit.js"></script>
+  <!-- Individual stylesheet for each level -->
+  <link href="../stylesheet/styleLvl0.css" rel="stylesheet" type="text/css" />
+  <link href="../stylesheet/styleLvl1.css" rel="stylesheet" type="text/css" />
+  <link href="../stylesheet/styleLvl2.css" rel="stylesheet" type="text/css" />
+  <style>
+    #visualization {
+      position: relative;
+    }
+
+    #visualization * {
+      transition: all ease 0.5s;
+    }
+
+    #circle {
+      position: absolute;
+      top : 0px;
+      left: 0px;
+      z-index: 1;
+      transition: all ease 0.5s;
+    }
+    #chart {
+      position: absolute;
+      top : 250px;
+      left : 33%;
+      z-index: 2;
+      transition: all ease 0.5s;
+    }
+  </style>
+  <title>Montreux Jazz Festival Through the Years</title>
+</head>
+  <body>
+    <div id="navbar"></div>
+
+    <div id="visualization">
+      <div id="circle" align="center"></div>
+    </div>
+    <script>
+      var colors = {
+        "Jazz": "#ff9933",
+        "Rock": "#cc0000",
+        "Blues": "#3333cc",
+        "R&B / soul": "#6600ff",
+        "Pop": "#ff3399",
+        "Electronic": "#00ffcc",
+        "Hip Hop": "#ffff66",
+        "Folk": "#996600",
+        "World music": "#a2ad2d",
+        "Latin": "#d35100",
+        "Country": "#8e620f",
+        "Religious": "#b2d0ff",
+        "Vocal": "#e8b2ff",
+        "New-age": "#ffd8b2",
+        "Avant-garde": "#625677",
+        "Classical": "#1a0000",
+        "Unknown": "#5b5a59"
+      };
+
+      d3.json("../data/lvl0.json", drawGraph);
+    </script>
+  </body>
+</html>

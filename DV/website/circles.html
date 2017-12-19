@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="../scripts/d3.v2.min.js"></script>
+  <style>
+    html, body {margin: 0; height: 100%}
+    .text {fill: white; font-family: sans-serif}
+  </style>
+</head>
+
+<body>
+  <script>
+    var dataArray = [23, 29, 24, 30, 37, 15, 18];
+
+    var svg = d3.select("body").append("svg")
+              .attr("height","1000")
+              .attr("width","100%");
+
+    var groups = svg.selectAll("g")
+        .data(dataArray)
+        .enter()
+        .append("g")
+        .attr("transform", function(d, i){return "translate("+(i*60 + 25)+","+(400 - (d*10))+")"});
+
+    var circle = groups.append("circle")
+        .attr("r", function(d, i) {return (d)});
+
+    var text = groups.append("text")
+        .text(function(d){return (d)})
+        .attr("x", "rect.cx")
+        .attr("y", "rect.cy")
+        .attr("class", "text")
+        .attr("alignment-baseline", "middle")
+        .attr("text-anchor", "middle");
+  </script>
+</body>
+</html>
