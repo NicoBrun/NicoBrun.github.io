@@ -92,6 +92,7 @@ header a.button:hover {
   position: relative;
   width: 1000px;
   height: 1000px;
+  margin: auto;
 }
 
 #visualization * {
@@ -109,9 +110,10 @@ header a.button:hover {
 #chart {
   position: absolute;
   top : 250px;
-  left: 0px;
-  right: 0px;
+  left: 250px;
   z-index: 2;
+  width: 500px;
+  height: 500px;
   transition: all ease 0.5s;
 }
 
