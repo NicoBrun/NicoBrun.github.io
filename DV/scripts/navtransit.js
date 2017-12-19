@@ -37,8 +37,8 @@ function backLvl0() {
   newCircle.align = "center";
 
   if (cur_lvl == 1) {
-    document.getElementById('circle').remove();
     document.getElementById('chart').remove();
+    document.getElementById('circle').remove();
     homeButton.removeChild(a);
     yearButton.removeChild(b);
     document.getElementById('visualization').appendChild(newCircle);
