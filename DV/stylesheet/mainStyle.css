@@ -78,13 +78,19 @@ header a.button:hover {
 
 .content section#viz_container {
   height: 1100px;
-  margin-bottom: 6em;
+  border-top: 5px solid #282828;
+  border-bottom: 5px solid #282828;
   overflow: hidden;
+}
+
+.content section#viz_container:after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
 #visualization {
   position: relative;
-  background: green;
 }
 
 #visualization * {
