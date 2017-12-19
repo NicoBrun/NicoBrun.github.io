@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #171717;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #E3E5E2;
+}
+
+header {
+  width: 100%;
+  background: #282828;
+  padding-left: 3em;
+}
+
+header h1 {
+  color: white;
+  font-family: 'Abril Fatface';
+  line-height: 2.5em;
+  font-size: 2em;
+  letter-spacing: 0px;
+  font-weight: normal;
+  transition: all ease 0.5s;
+}
+
+header h1:hover {
+  letter-spacing: 4px;
+  transition: all ease 0.5s;
+}
+
+nav {
+  display: block;
+  width: 70%;
+  margin-left: 30px;
+  border-bottom: 1px solid #A4AAB2;
+}
+
+nav a {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #282828;
+  font-size: 1em;
+  line-height: 1em;
+  transition: all ease 0.5s;
+}
+
+nav a:before {
+  color: #A4AAB2;
+  max-width: 0;
+  border-top: 1px dashed #A4AAB2;
+  border-bottom: 1px dashed #A4AAB2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  content: attr(data-text);
+  transition: all ease 0.5s;
+}
+
+nav a:hover:before,
+nav a:focus:before {
+  max-width: 100%;
+  outline: none;
+  text-shadow: none;
+  transition: all ease 0.5s;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  font-size: 0.6em;
+  background-color: #282828;
+  color: white;
+  text-align: center;
+}
