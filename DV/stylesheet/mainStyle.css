@@ -44,7 +44,7 @@ header a.button {
   position: absolute;
   top: 1.5em;
   right: 1.5em;
-  height: 2.7777777778em;
+  height: 2.7em;
   padding: 0 1.2em;
   border: solid 2px #fff;
   color: #fff;
@@ -60,11 +60,9 @@ header a.button:hover {
   transition: all ease 0.3s;
 }
 
-
-
 .content {
-  position: relative;
-  top: 6em;
+  padding-top: 5em;
+  padding-bottom: 3em;
 }
 
 .content div {
