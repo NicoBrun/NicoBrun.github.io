@@ -94,13 +94,15 @@ header a.button:hover {
   position: absolute;
   top : 0px;
   left: 0px;
+  right: 0px;
   z-index: 1;
   transition: all ease 0.5s;
 }
 #chart {
   position: absolute;
   top : 250px;
-  left : 30%;
+  left: 0px;
+  right: 0px;
   z-index: 2;
   transition: all ease 0.5s;
 }
