@@ -44,8 +44,8 @@ function backLvl0() {
     document.getElementById('visualization').appendChild(newCircle);
     d3.json("../data/lvl0.json", drawGraph);
   } else if (cur_lvl == 2) {
-    document.getElementById('circle').remove();
     document.getElementById('chart').remove();
+    document.getElementById('circle').remove();
     document.getElementById('map').remove();
     homeButton.removeChild(a);
     yearButton.removeChild(b);
@@ -56,10 +56,11 @@ function backLvl0() {
 }
 
 function backLvl1() {
+  cur_lvl = 1;
   genreButton.removeChild(c);
   document.getElementById('map').remove();
   document.getElementById('chart').style.zIndex = 1;
   document.getElementById('chart').style.opacity = 1;
   yearButton.removeEventListener("click", function() {backLvl1()});
-  yearButton.addEventListener("mouseover", yearButton.style.cursor = "auto");
+  yearButton.addEventListener("mouseover", function(){yearButton.style.cursor = "auto"});
 }
