@@ -34,8 +34,9 @@ header h1:hover {
 
 nav {
   display: block;
+  margin-top: 1em;
   width: 70%;
-  margin-left: 30px;
+  margin-left: 1em;
   border-bottom: 1px solid #A4AAB2;
 }
 
