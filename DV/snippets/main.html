@@ -14,60 +14,60 @@
   <link href="../stylesheet/styleLvl0.css" rel="stylesheet" type="text/css" />
   <link href="../stylesheet/styleLvl1.css" rel="stylesheet" type="text/css" />
   <link href="../stylesheet/styleLvl2.css" rel="stylesheet" type="text/css" />
+  <link href="../stylesheet/mainStyle.css" rel="stylesheet" type="text/css" />
   <style>
-    #visualization {
-      position: relative;
-    }
 
-    #visualization * {
-      transition: all ease 0.5s;
-    }
-
-    #circle {
-      position: absolute;
-      top : 0px;
-      left: 0px;
-      z-index: 1;
-      transition: all ease 0.5s;
-    }
-    #chart {
-      position: absolute;
-      top : 250px;
-      left : 30%;
-      z-index: 2;
-      transition: all ease 0.5s;
-    }
   </style>
   <title>Montreux Jazz Festival Through the Years</title>
 </head>
   <body>
-    <div id="navbar"></div>
+    <header>
+      <h1>
+        Evolution of the Montreux Jazz Festival
+      </h1>
+      <a href="../index.html" class="button">
+        Back to Index
+      </a>
+    </header>
+    <div class="content">
+      <section>
+        <p>
+          All about Beyonce, yeah yeah hi!
+        </p>
+      </section>
+      <section id="viz_container">
+        <div id="navbar"></div>
+        <div id="visualization">
+          <div id="circle" align="center"></div>
+        </div>
+        <script>
+          var colors = {
+            "Jazz": "#008080",
+            "Rock": "#DC2E23",
+            "Blues": "#0082c8",
+            "R&B / soul": "#5c97ce",
+            "Pop": "#fabebe",
+            "Electronic": "#ffd8b1",
+            "Hip Hop": "#808000",
+            "Folk": "#fffac8",
+            "World music": "#aa6e28",
+            "Latin": "#f58231",
+            "Country": "#800000",
+            "Religious": "#aaffc3",
+            "Vocal": "#e6beff",
+            "New-age": "#d2f53c",
+            "Avant-garde": "#911eb4",
+            "Classical": "#5da066",
+            "Unknown": "#808080	"
+          };
 
-    <div id="visualization">
-      <div id="circle" align="center"></div>
+          d3.json("../data/lvl0.json", drawGraph);
+        </script>
+      </section>
     </div>
-    <script>
-      var colors = {
-        "Jazz": "#ff9933",
-        "Rock": "#cc0000",
-        "Blues": "#3333cc",
-        "R&B / soul": "#6600ff",
-        "Pop": "#ff3399",
-        "Electronic": "#00ffcc",
-        "Hip Hop": "#ffff66",
-        "Folk": "#996600",
-        "World music": "#a2ad2d",
-        "Latin": "#d35100",
-        "Country": "#8e620f",
-        "Religious": "#b2d0ff",
-        "Vocal": "#e8b2ff",
-        "New-age": "#ffd8b2",
-        "Avant-garde": "#625677",
-        "Classical": "#1a0000",
-        "Unknown": "#5b5a59"
-      };
-
-      d3.json("../data/lvl0.json", drawGraph);
-    </script>
+    <footer>
+      Project by Othman Benchekroun, Nicolas Brunner and Saskia Reiss for the 2017 Data Visualization Project at EPFL.<br/>
+      All data used for the visualization belong to the Montreux Jazz Festival © Fondation du Festival de Jazz de Montreux.
+    </footer>
   </body>
 </html>
