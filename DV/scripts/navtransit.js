@@ -17,7 +17,7 @@ function addHomeButton(year) {
 
   document.getElementById('navbar').appendChild(homeButton);
   document.getElementById('navbar').appendChild(yearButton);
-  homeButton.addEventListener("mouseover", homeButton.style.cursor = "pointer");
+  homeButton.addEventListener("mouseover", function() {homeButton.style.cursor = "pointer"});
   homeButton.addEventListener("click", function() {backLvl0()});
 }
 
@@ -27,7 +27,7 @@ function addYearButton(genre) {
   genreButton.appendChild(c);
 
   document.getElementById('navbar').appendChild(genreButton);
-  yearButton.addEventListener("mouseover", yearButton.style.cursor = "pointer");
+  yearButton.addEventListener("mouseover", function(){yearButton.style.cursor = "pointer"});
   yearButton.addEventListener("click", function() {backLvl1()});
 }
 
