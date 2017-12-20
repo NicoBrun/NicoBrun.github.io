@@ -1,8 +1,6 @@
   function createLvl2Graph(groupYear, groupGenre) {
     d3.json("../data/lvl2.json", function (error, data) {
       data = data.filter(function(d) {return d.year === groupYear && d.genre === groupGenre; });
-      //console.log("swag");
-      // console.log(data); // this is your data
 
       var circle_size = 20;
 
@@ -13,14 +11,15 @@
         bottom: -5,
         left: -5
       };
-      var width = 1000 - margin.left - margin.right,
-      height = 1000 - margin.top - margin.bottom;
+        
+      var width = window.innerWidth*0.7 - margin.left - margin.right,
+      height = window.innerWidth*0.7*0.7 - margin.top - margin.bottom;
 
       //force
       var force = d3.layout.force()
-        .charge(-200)
-        .linkDistance(150)
-        .size([width + margin.left + margin.right, height + margin.top + margin.bottom]);
+        .charge(-800)
+        .linkDistance(400)
+        .size([width, height]);
 
       //drag
       var drag = d3.behavior.drag().
@@ -36,8 +35,7 @@
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.right + ")");
-      //.call(zoom)
+        //.attr("transform", "translate(" + margin.left + "," + margin.right + ")");
 
       //create tip for elements
       var tip = d3.tip()
@@ -102,6 +100,11 @@
         .attr("x", 0)
         .attr("y", -(circle_size+2))
         .style("opacity", 1)
+        .style("fill", "#000000")
+        .style("stroke", "#ffffff")
+        .style("stroke-width", "0.1px")
+        .style("font-size","12pt")
+        .style("font-weight", "900")
         .html(function(d) {
           return d.name
         });

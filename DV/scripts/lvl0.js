@@ -103,15 +103,6 @@ function drawGraph(graph) {
     var nod = d3.select(this);
     addTooltip(nod);
 
-
-
-    plot.selectAll("node")
-      .each(function(n) {
-        n.style("fill","rgb(255,0,0)");
-        n.attr("r", 14);
-        // n.target = n.source = false;
-      });
-
     nod.attr("r", 14);
     nod.style("cursor", "pointer")
 
