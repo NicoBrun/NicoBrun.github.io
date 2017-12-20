@@ -2,7 +2,7 @@
     d3.json("../data/lvl2.json", function (error, data) {
       data = data.filter(function(d) {return d.year === groupYear && d.genre === groupGenre; });
 
-      var circle_size = 20;
+      var circle_size = Math.min(20/data.length*25,30);
 
       //seting size and position
       var margin = {
@@ -13,7 +13,7 @@
       };
         
       var width = window.innerWidth*0.7 - margin.left - margin.right,
-      height = window.innerWidth*0.7*0.7 - margin.top - margin.bottom;
+      height = 1000 - margin.top - margin.bottom;
 
       //force
       var force = d3.layout.force()
