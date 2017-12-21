@@ -92,15 +92,17 @@ header a.button:hover {
 #legend {
   position: absolute;
   z-index: 999;
-  right: 0;
+  right: 0.5em;
   top: -4.5em;
   max-height: 8em;
+  font-size: 1em;
+  line-height: 1.2em;
   background: #282828;
   color: #E3E5E2;
   border: 3px solid white;
   border-radius: 1em;
   width: 25%;
-  max-width: 50em;
+  max-width: 30em;
   padding: 1em;
   transform: rotate(180deg);
   transition: all ease 1s;
@@ -141,6 +143,18 @@ header a.button:hover {
 
 #legend .right_side {
   float: right;
+}
+
+#legend #color_legend .genre_list {
+  height: 1.2em;
+  margin-bottom: 0.3em;
+}
+
+#legend #color_legend .genre_list span {
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  margin-right: 0.2em;
 }
 
 #navbar {

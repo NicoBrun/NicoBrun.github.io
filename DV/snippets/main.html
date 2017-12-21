@@ -2,6 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
   <!-- JavaScript Libraries -->
   <script src="../scripts/d3.v3.min.js"></script>
   <script src="../scripts/d3.tip.v0.6.3.js"></script>
@@ -72,6 +75,17 @@
           };
 
           // creating the color Legend
+          for (var genre in colors) {
+            var n;
+            var genre_list = document.createElement("div");
+            genre_list.className = "genre_list";
+            var color_genre = document.createElement("span");
+            color_genre.style.background = colors[genre];
+            n = document.createTextNode(genre);
+            genre_list.appendChild(color_genre);
+            genre_list.appendChild(n);
+            document.getElementById('color_legend').appendChild(genre_list);
+          }
 
           d3.json("../data/lvl0.json", drawGraph);
         </script>
