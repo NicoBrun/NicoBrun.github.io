@@ -47,7 +47,7 @@ function backLvl0() {
     d3.json("../data/lvl0.json", drawGraph);
   } else if (cur_lvl == 2) {
     //background color is genre
-    document.getElementById('visualization').style.background = 'white';
+    document.getElementById('viz_container').style.background = '#E3E5E2';
     document.getElementById('chart').remove();
     document.getElementById('circle').remove();
     document.getElementById('map').remove();
@@ -64,7 +64,7 @@ function backLvl0() {
 
 function backLvl1() {
   cur_lvl = 1;
-  document.getElementById('visualization').style.background= 'white';
+  document.getElementById('viz_container').style.background= '#E3E5E2';
   genreButton.removeChild(c);
   document.getElementById('genreButton').remove();
   document.getElementById('map').remove();

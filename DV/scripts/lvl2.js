@@ -16,7 +16,7 @@
       height = 1000 - margin.top - margin.bottom;
 
       //background color is genre
-      document.getElementById('visualization').style.background= colors[groupGenre];
+      document.getElementById('viz_container').style.background= colors[groupGenre];
 
       //force
       var force = d3.layout.force()
