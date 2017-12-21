@@ -93,9 +93,9 @@ header a.button:hover {
 }
 
 #navbar span {
-  height: 1em;
-  font-size: 0.9em;
-  line-height: 1em;
+  height: 1.6em;
+  font-size: 1.5em;
+  line-height: 1.6em;
   display: inline-block;
   vertical-align: middle;
   margin-right: 0.3em;
@@ -107,9 +107,9 @@ header a.button:hover {
   display: inline-block;
   vertical-align: middle;
   margin-left: 0.3em;
-  height: 1em;
-  font-size: 0.9em;
-  line-height: 1em;
+  height: 1.2em;
+  font-size: 1.1em;
+  line-height: 1.2em;
 }
 
 #navbar span:last-child {
