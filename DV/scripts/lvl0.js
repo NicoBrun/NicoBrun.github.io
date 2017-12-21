@@ -132,10 +132,10 @@ function drawGraph(graph) {
       .style("opacity", 0)
     //changed the opacity of the node
     plot.selectAll(".node")
+      .style("pointer-events","none")
       .transition()
       .duration(2000)
       .style("opacity", 0)
-      .style("pointer-events","none")
     //remove the tooltip
     d3.select("#tooltip").remove();
     //create the next lvl
@@ -169,23 +169,6 @@ function drawGraph(graph) {
       .style("pointer-events","visible");
     document.getElementById('chart').remove();
     document.getElementById('map').remove();
-  }
-
-  //will maybe be useful for lvl2 and 3
-  //https://stackoverflow.com/questions/13595175/updating-svg-element-z-index-with-d3
-  d3.selection.prototype.bringElementAsTopLayer = function() {
-    return this.each(function(){
-      this.parentNode.appendChild(this);
-    });
-  };
-  //d3.select(this).bringElementAsTopLayer();
-  d3.selection.prototype.pushElementAsBackLayer = function() {
-    return this.each(function() {
-      var firstChild = this.parentNode.firstChild;
-      if (firstChild) {
-        this.parentNode.insertBefore(this, firstChild);
-      }
-    });
   }
 }
 

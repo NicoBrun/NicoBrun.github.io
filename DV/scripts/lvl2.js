@@ -12,7 +12,7 @@
         left: -5
       };
       
-      var width = Math.min(window.innerWidth*0.7,1000) - margin.left - margin.right,
+      var width = 1000 - margin.left - margin.right,
       height = 1000 - margin.top - margin.bottom;
 
       //background color is genre
