@@ -100,6 +100,7 @@ header a.button:hover {
   border: 3px solid white;
   border-radius: 1em;
   width: 25%;
+  max-width: 50em;
   padding: 1em;
   transform: rotate(180deg);
   transition: all ease 1s;
