@@ -76,6 +76,7 @@ header a.button:hover {
 }
 
 .content #viz_container {
+  position: relative;
   height: 1100px;
   border-top: 5px solid #282828;
   border-bottom: 5px solid #282828;
@@ -86,6 +87,59 @@ header a.button:hover {
   content: '';
   display: block;
   clear: both;
+}
+
+#legend {
+  position: absolute;
+  z-index: 999;
+  right: 0;
+  top: -4.5em;
+  max-height: 8em;
+  background: #282828;
+  color: #E3E5E2;
+  border: 3px solid white;
+  border-radius: 1em;
+  width: 25%;
+  padding: 1em;
+  transform: rotate(180deg);
+  transition: all ease 1s;
+  overflow: hidden;
+}
+
+#legend:hover {
+  max-height: 50em;
+  transition: all ease 1s;
+  transform: rotate(0deg);
+}
+
+#legend:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#legend #lg_title{
+  width: 95%;
+  font-size: 1.5em;
+  line-height: 1.6em;
+  font-family: 'Abril Fatface';
+  text-align: center;
+  transform: rotate(180deg);
+}
+
+#legend #link_gradient {
+  width: 95%;
+  height: 1em;
+  margin: auto;
+  background: linear-gradient(to right, white , black);
+}
+
+#legend span {
+  display: inline-block;
+}
+
+#legend .right_side {
+  float: right;
 }
 
 #navbar {

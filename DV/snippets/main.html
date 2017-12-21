@@ -37,7 +37,14 @@
       </section>
       <section id="viz_container">
         <div id="legend">
-          Legend
+          <div id="lg_title">Legend</div>
+          <div id="link_legend">
+            Similarity in artist lineup between years:
+            <div id="link_gradient"></div>
+            <span>0</span>
+            <span class="right_side">10</span>
+          </div>
+          <div id="color_legend"></div>
         </div>
         <div id="navbar"></div>
         <div id="visualization">
@@ -63,6 +70,8 @@
             "Classical": "#5da066",
             "Unknown": "#808080"
           };
+
+          // creating the color Legend
 
           d3.json("../data/lvl0.json", drawGraph);
         </script>

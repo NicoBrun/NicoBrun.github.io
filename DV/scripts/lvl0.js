@@ -144,6 +144,7 @@ function drawGraph(graph) {
     node.id = "chart";
     document.getElementById('visualization').appendChild(node);
     document.getElementById('circle').style.zIndex = -1;
+    document.getElementById('link_legend').style.display = 'none';
     createLvl1Graph(year);
     addHomeButton(year);
   }

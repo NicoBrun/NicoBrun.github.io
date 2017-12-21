@@ -35,6 +35,7 @@ function backLvl0() {
   var newCircle = document.createElement("div");
   newCircle.id = "circle";
   newCircle.align = "center";
+  document.getElementById('link_legend').style.display = 'block';
 
   if (cur_lvl == 1) {
     document.getElementById('chart').remove();
