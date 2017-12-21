@@ -11,8 +11,8 @@
         bottom: -5,
         left: -5
       };
-
-      var width = window.innerWidth*0.7 - margin.left - margin.right,
+      
+      var width = Math.min(window.innerWidth*0.7,1000) - margin.left - margin.right,
       height = 1000 - margin.top - margin.bottom;
 
       //background color is genre
@@ -38,7 +38,6 @@
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        //.attr("transform", "translate(" + margin.left + "," + margin.right + ")");
 
       //create tip for elements
       var tip = d3.tip()
@@ -87,6 +86,7 @@
         .attr("class", "clip-path")
         .attr("r", circle_size);
 
+      //we only have this logo until we get the image from the real dataset of the MJF
       node.append("svg:image")
         .attr("class", "circle")
         .attr("xlink:href", d => "http://www.vector-logo.net/logo_preview/eps/m/Montreux_Jazz_Festival.png")
@@ -103,10 +103,11 @@
         .attr("x", 0)
         .attr("y", -(circle_size+2))
         .style("opacity", 1)
+        .attr("text-anchor", "middle")
         .style("fill", "#000000")
         .style("stroke", "#ffffff")
         .style("stroke-width", "0.1px")
-        .style("font-size","12pt")
+        .style("font-size","10pt")
         .style("font-weight", "900")
         .html(function(d) {
           return d.name
@@ -122,11 +123,6 @@
       //activate tip over nodes
       node.on('mouseover', tip.show)
         .on('mouseout', tip.hide);
-
-      //zoom
-      function zoomed() {
-        container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-      }
 
       //dragging
       function dragstarted(d) {
