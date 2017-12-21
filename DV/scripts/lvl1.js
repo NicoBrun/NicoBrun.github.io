@@ -83,7 +83,9 @@ function createLvl1Graph(genreYear) {
 
           g.append("text")
             .attr("class", "value-text")
-            .text(`${d.data.percentage*100}%`)
+            .text(function(d){
+                val = parseFloat(Math.round(d.data.percentage*100 * 100) / 100).toFixed(2);
+                return `${val}%`;})
             .attr('text-anchor', 'middle')
             .attr('dy', '.6em');
         })
@@ -100,7 +102,7 @@ function createLvl1Graph(genreYear) {
           d3.select(this)
             .style("cursor", "pointer")
             .style("opacity", "0.6")
-            .style("transform", "scale(1.1)");
+            .style("transform", "scale(1.03)");
         })
       .on("mouseout", function(d) {
           d3.select(this)
