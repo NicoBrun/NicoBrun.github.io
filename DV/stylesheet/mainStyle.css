@@ -88,6 +88,39 @@ header a.button:hover {
   clear: both;
 }
 
+#navbar {
+  margin-left: 1em;
+}
+
+#navbar span {
+  height: 1em;
+  font-size: 0.9em;
+  line-height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.3em;
+  transform: all ease 0.5s;
+}
+
+#navbar span:after {
+  content: '>';
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.3em;
+  height: 1em;
+  font-size: 0.9em;
+  line-height: 1em;
+}
+
+#navbar span:last-child {
+  margin-right: 0em;
+  font-weight: bold;
+}
+
+#navbar span:last-child:after {
+  display: none;
+}
+
 #visualization {
   position: relative;
   width: 1000px;

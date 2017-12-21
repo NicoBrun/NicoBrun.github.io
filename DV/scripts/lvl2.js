@@ -11,9 +11,12 @@
         bottom: -5,
         left: -5
       };
-        
+
       var width = window.innerWidth*0.7 - margin.left - margin.right,
       height = 1000 - margin.top - margin.bottom;
+
+      //background color is genre
+      document.getElementById('map').style.background= colors[groupGenre];
 
       //force
       var force = d3.layout.force()
@@ -50,7 +53,7 @@
              myString = myString + ("<p>" + d.tracklist[i] + "</p>");
              i++;
           }
-          return "<strong>Genre:</strong> <span style='color:lightgray'>" + d.genre + "</span>" + myString+"</span>";
+          return myString+"</span>";
         })
       svg.call(tip);
 
