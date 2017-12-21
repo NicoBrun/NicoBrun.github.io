@@ -48,10 +48,11 @@ nav a {
   color: #282828;
   font-size: 1em;
   line-height: 1em;
-  transition: all ease 0.5s;
+  transition: all ease 1s;
 }
 
 nav a:before {
+  height: 1.2em;
   color: #A4AAB2;
   max-width: 0;
   border-top: 1px dashed #A4AAB2;
@@ -61,7 +62,7 @@ nav a:before {
   left: 0;
   overflow: hidden;
   content: attr(data-text);
-  transition: all ease 0.5s;
+  transition: all ease 1s;
 }
 
 nav a:hover:before,
@@ -69,7 +70,23 @@ nav a:focus:before {
   max-width: 100%;
   outline: none;
   text-shadow: none;
-  transition: all ease 0.5s;
+  transition: all ease 1s;
+}
+
+section {
+  width: 100%;
+  margin-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+section h2 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Abril Fatface';
+  color: #171717;
+  font-weight: normal;
+  text-shadow: 1px 1px 0px white;
 }
 
 footer {

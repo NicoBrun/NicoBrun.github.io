@@ -7,7 +7,7 @@ function addTooltip(circle) {
   var x = parseFloat(circle.attr("cx"));
   var y = parseFloat(circle.attr("cy"));
   var r = parseFloat(circle.attr("r"));
-  var text = circle.attr("id") + " main genre: "+circle.attr("genre");
+  var text = circle.attr("id");
 
   var tooltip = d3.select("#plot")
     .append("text")

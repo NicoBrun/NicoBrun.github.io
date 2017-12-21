@@ -41,15 +41,22 @@ function backLvl0() {
     document.getElementById('circle').remove();
     homeButton.removeChild(a);
     yearButton.removeChild(b);
+    document.getElementById('homeButton').remove();
+    document.getElementById('yearButton').remove();
     document.getElementById('visualization').appendChild(newCircle);
     d3.json("../data/lvl0.json", drawGraph);
   } else if (cur_lvl == 2) {
+    //background color is genre
+    document.getElementById('viz_container').style.background = '#E3E5E2';
     document.getElementById('chart').remove();
     document.getElementById('circle').remove();
     document.getElementById('map').remove();
     homeButton.removeChild(a);
     yearButton.removeChild(b);
     genreButton.removeChild(c);
+    document.getElementById('homeButton').remove();
+    document.getElementById('yearButton').remove();
+    document.getElementById('genreButton').remove();
     document.getElementById('visualization').appendChild(newCircle);
     d3.json("../data/lvl0.json", drawGraph);
   }
@@ -57,7 +64,9 @@ function backLvl0() {
 
 function backLvl1() {
   cur_lvl = 1;
+  document.getElementById('viz_container').style.background= '#E3E5E2';
   genreButton.removeChild(c);
+  document.getElementById('genreButton').remove();
   document.getElementById('map').remove();
   document.getElementById('chart').style.zIndex = 1;
   document.getElementById('chart').style.opacity = 1;

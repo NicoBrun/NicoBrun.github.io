@@ -4,13 +4,24 @@
   height: 1100px;
 }
 .d3-tip {
-  line-height: 1;
+  line-height: 1em;
   font-weight: bold;
   padding: 12px;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 2px;
 }
+
+.d3-tip > p {
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.d3-tip span p {
+  margin: 0px;
+  font-size: 0.8em;
+}
+
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
   box-sizing: border-box;
