@@ -135,6 +135,10 @@ function drawGraph(graph) {
       .transition()
       .duration(900)
       .style("opacity", 0)
+    plot.selectAll("rect")
+      .transition()
+      .duration(900)
+      .style("opacity", 0)
     //changed the opacity of the node
     plot.selectAll(".node")
       .style("pointer-events","none")
