@@ -138,6 +138,8 @@ a.process_onglet:target {
   display: block;
   max-width: 90%;
   margin: auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .process_content a {
@@ -155,6 +157,7 @@ a.process_onglet ~ #process_content_block .process_content {
   top: 0;
   left: 0;
   opacity: 0;
+  z-index: 0;
   width: 100%;
   transition: all ease 0.5s;
 }
@@ -169,6 +172,7 @@ a.process_onglet ~ #process_content_block .process_content {
 #week7:target ~ #process_content_block #week7_content,
 #review:target ~ #process_content_block #review_content {
   opacity: 1;
+  z-index: 1;
   transition: all ease 0.5s;
 }
 
