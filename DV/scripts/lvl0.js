@@ -65,7 +65,13 @@ function drawGraph(graph) {
       });
     });
   });
-
+    
+  //rect between 2016 and 1967
+  plot.append("rect")
+      .attr("x", -1)
+      .attr("y", -415)
+      .attr("width", 2)
+      .attr("height", 30);    
   // calculate node positions
   circleLayout(nodes);
 
