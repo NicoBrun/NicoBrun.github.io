@@ -105,10 +105,10 @@
         .style("opacity", 1)
         .attr("text-anchor", "middle")
         .style("fill", "#000000")
+        .style("font-size","1em")
+        .style("font-weight", "500")
         .style("stroke", "#ffffff")
-        .style("stroke-width", "0.1px")
-        .style("font-size","10pt")
-        .style("font-weight", "900")
+        .style("stroke-width", "0.1em")
         .html(function(d) {
           return d.name
         });

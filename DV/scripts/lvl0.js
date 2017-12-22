@@ -105,7 +105,6 @@ function drawGraph(graph) {
 
     nod.attr("r", 14);
     nod.style("cursor", "pointer")
-
   }
 
   function mouseouted(d){
@@ -148,30 +147,7 @@ function drawGraph(graph) {
     createLvl1Graph(year);
     addHomeButton(year);
   }
-
-  //unzoom into the whole circle
-  function resetLvl0() {
-    //recenter
-    active = d3.select(null);
-    plot.transition()
-      .duration(750)
-      .attr("transform", "translate(" + radius + ", " + radius + ")");
-    //makes the links visible
-    plot.selectAll(".link")
-      .transition()
-      .duration(750)
-      .style("opacity", 1);
-    //makes the node visible
-    plot.selectAll(".node")
-      .transition()
-      .duration(750)
-      .style("opacity", 1)
-      .style("pointer-events","visible");
-    document.getElementById('chart').remove();
-    document.getElementById('map').remove();
-  }
 }
-
 // Calculates node locations
 function circleLayout(nodes) {
   // use to scale node index to theta value
