@@ -91,7 +91,7 @@ header a.button:hover {
 
 #legend {
   position: absolute;
-  z-index: 999;
+  z-index: 990;
   right: 0.5em;
   top: -4.5em;
   max-height: 8em;
