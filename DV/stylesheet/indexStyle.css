@@ -3,6 +3,7 @@
 }
 
 body {
+  position: relative;
   margin: 0;
   padding: 0;
   color: #171717;
@@ -131,6 +132,22 @@ a.process_onglet:target {
   margin-top: 1.5em;
   font-size: 0.9em;
   text-align: justify;
+}
+
+.process_content img {
+  display: block;
+  max-width: 90%;
+  margin: auto;
+}
+
+.process_content a {
+  text-decoration: none;
+  font-style: italic;
+  color: darkgrey;
+}
+
+.process_content li {
+  margin-top: 0.5em;
 }
 
 a.process_onglet ~ #process_content_block .process_content {
