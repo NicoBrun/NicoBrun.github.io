@@ -6,6 +6,7 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
+  min-height: 100em;
   color: #171717;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #E3E5E2;
