@@ -89,6 +89,71 @@ section h2 {
   text-shadow: 1px 1px 0px white;
 }
 
+#topdf {
+  margin-left: 2em;
+}
+
+#topdf a {
+  text-decoration: none;
+  color: grey;
+}
+
+#topdf .howto {
+  display: block;
+  font-size: 0.8em;
+  color: darkgrey;
+}
+
+a.process_onglet {
+  text-decoration: none;
+  color: #171717;
+}
+
+a.process_onglet:after {
+  display: inline-block;
+  vertical-align: top;
+  content: '-';
+}
+
+a.process_onglet:last-of-type:after {
+  display: none;
+}
+
+a.process_onglet:target {
+  font-weight: bold;
+}
+
+#process_content_block {
+  position: relative;
+  width: 95%;
+  margin: auto;
+  margin-top: 1.5em;
+  font-size: 0.9em;
+  text-align: justify;
+}
+
+a.process_onglet ~ #process_content_block .process_content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  transition: all ease 0.5s;
+}
+
+#overview:target ~ #process_content_block #overview_content,
+#week1:target ~ #process_content_block #week1_content,
+#week2:target ~ #process_content_block #week2_content,
+#week3:target ~ #process_content_block #week3_content,
+#week4:target ~ #process_content_block #week4_content,
+#week5:target ~ #process_content_block #week5_content,
+#week6:target ~ #process_content_block #week6_content,
+#week7:target ~ #process_content_block #week7_content,
+#review:target ~ #process_content_block #review_content {
+  opacity: 1;
+  transition: all ease 0.5s;
+}
+
 footer {
   position: absolute;
   right: 0;
