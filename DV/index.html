@@ -23,7 +23,7 @@
         Process Book
       </h2>
       <div id="topdf">
-        <a href="#">
+        <a href="data/Process_Book.pdf">
           Link to PDF version
         </a>
         <span class="howto">
@@ -59,7 +59,15 @@
       </a>
       <div id="process_content_block">
         <div class="process_content" id="overview_content">
-          Content of overview
+          <p>
+            “Why should Beyoncé be the next headline of the Montreux Jazz Festival?”. Even though this question may seem cheeky, it presents the purpose of our visualization: reconstructing the evolution of the music performed at the Montreux Jazz Festival.
+          </p>
+          <p>
+            As such, we used their database to show that Jazz hasn’t always been the predominant style of each edition of the Festival. Even though this visualization was inspired by Dr Benzi’s <a href="www.kirellbenzi.com/blog/evolution-of-genres-in-the-montreux-jazz-festival/" >“Evolution of genres in the Montreux Jazz Festival”</a>, this visualization uses a different approach to show how this has evolved.
+          </p>
+          <p>
+            The process book that follows is a week-by-week account of our project answering all questions that would be tackled in a scientific report with the difference that it is more personal and more true to the path we followed.
+          </p>
         </div>
         <div class="process_content" id="week1_content">
           <p>
@@ -128,22 +136,88 @@
             Thus, this week’s work was mostly centered on how to implement the new features we decided to add to our visualization. To make sure this works, we created a (very small) fake database using the JSON format and the information we needed.
             <img src="Scans/23-11-2017-scan001.jpg" />
           </p>
-
         </div>
         <div class="process_content" id="week4_content">
-          Content of Week 4
+          <p>
+            God has answered our prayers and sent us the dataset! (Well, it’s more like we should thank the teacher because he’s the one who sent it by mail). This shaped our work for the week as we spent a lot of time trying to make sense out of the data. Most of our work can be found on the Python Notebooks in the Git Repository.
+          </p>
+          <p>
+            After searching for the data we needed in the different JSON file we were provided, we created new clean versions of these files with the same ‘id’s to be able to use them. We first retrieved the Artists’ useful data (their ‘publicName’, ‘image’ and ‘concerts’) and Bands’ (their ‘name’).  On we got all the information we needed on the performers which came to the Montreux Jazz, we focused on their songs. We decided to keep the ‘title’ and ‘songs’ from the “Compositions” file. Finally, we retrieved all the information related to the concerts (the ‘name’, ‘date’, ‘genres’ and ‘mainGenres’ of each Concert and ‘startDate’ along with the ‘concerts’ from the Concert Groups).
+          </p>
+          <p>
+            The task was not over when we retrieved the data as we still needed to process it. First, we processed all the dates to keep the year only (there is no need for us to have the exact concert date as we only need the concert’s edition). We then turned our attention to the concerts’ ‘genres’ and ‘mainGenres’ which we did not completely understand.
+          </p>
+          <p>
+            After some exploratory analysis, we determined that the first mainGenre is what really shows the essence of the music’s style. Unlike ‘genres’, this field only has a small number of categories, which makes it more meaningful. All the concerts that did not have any mainGenre and genre were marked as having an ‘Unknown’ genre. On the other hand, concerts where the mainGenre stated ‘Other’ were defined using their first ‘genre’ instead.
+          </p>
+          <p>
+            Almost all the data we needed had been retrieved, cleaned and processed to fit our needs for the visualization; however some element was still missing: the tracklist of each concert. We thought that was exactly what the Compositions provided as it listed all the songs. Moreover, we found out that the images of the artist were not actually provided (the field was completely empty).
+          </p>
+          <p>
+            After a lot of head scratching and brainstorming to try to change these elements, we determined that the missing images were not much of a problem. As we did not have the locations needed to display our bubbles either, we figured that we could simply go back to our first idea for the third level: randomly placing the artists’ nodes on the screen. However, displaying the song list was non-negotiable as it was a very important part of our visualization.
+          </p>
+          <p>
+            By chance, we found out that the concerts’ JSON was nested multiple times. We had no idea of all the jewels that were hiding in the file before this discovery. However, that’s a story for next week.
+          </p>
         </div>
         <div class="process_content" id="week5_content">
-          Content of Week 5
+          <p>
+            As we mentioned at the end of last week’s article, we discovered that the Concerts JSON file provided a lot more information than all the other files. Unfortunately, there were still no signs of images (but we had already given up on the idea by then). But this treasure came with a cost: finding a way to extract all the information that were just within our reach. In parallel, we also had to continue working on the visualization to make sure it would be completed.
+          </p>
+          <p>
+            Let’s start with our advancement of the visualization. As there was still no usable information, we decided to create a new set of fake data in order to work on the levels. The difference with our old fake dataset was the data format: now that we had an idea of what the information would look like and how we could translate them into JSON, we decided to create our own nesting template (which is to be used when exporting the cleaned data).
+          </p>
+          <p>
+            The other big step we made with our visualization was linking the different levels. As we were working on each visualization separately, it was necessary to merge our work. This was made possible with the new nested data and a little research on argument forwarding using JavaScript. Merging these levels meant tweaking them to have a coherent story but also trying to link them. This is when the “zooming part” implementation happened.
+          </p>
+          <p>
+            As we were already warned by the teacher, we knew we had to take some time to do research and think about a clean way to do it. However, even this did not allow us to put into code what we had in mind. We still came up with a good alternative that allowed giving a similar effect: even though we zoomed in the visualization each time to “enter the bubble”, the underlying layer wasn’t inside the bubble but was simply uncovered using a fading effect on the screen.
+          </p>
+          <p>
+            Getting back to our data retrieval, cleaning and processing, it was fairly easier once the data was on the Jupyter Notebook as we knew exactly what we were looking for and what we needed to do to make this data usable. Using our findings from last week, we did not find any issue with date formatting and genre definition. The only thing that took us time was coming up with the methods and algorithms to create new information.
+          </p>
+          <p>
+            Our first puzzle was getting the tracklist of each concert. Many ‘title’ values were null, but it seems like this was due to their extraction method. These lists were most likely compiled using digitalized video tapings of the MJF as these NaNs corresponded to applause during the concert or opening/closing speeches. After cleaning the titles, we simply put each one in a list and attached it to the concert.
+          </p>
+          <p>
+            The two other algorithms we came up with allowed us to compute the similarity between each pair of years (their number of common artists) and the percentage (along with the predominant) genre of each year. Once everything was finally computed and ready to be exported, we discovered that the problems we faced throughout our project were not due to the dataset not being provided, the data being hard to find or hard to get; the real problem of this project is our JSON curse!
+          </p>
         </div>
         <div class="process_content" id="week6_content">
-          Content of Week 6
+          <p>
+            Even after roaming through all the StackOverflow topics and reading all the Pandas and JSON documentation, we could not achieve the model we were hoping to get. So, for the third week in a row, our focus was the data we are working with more than the visualization we are supposed to be creating. As formatting the JSON file was apparently impossible, the remaining option we had was changing how we handled the data in JavaScript.
+          </p>
+          <p>
+            Most of this week’s work was done on the back-end instead of the front-end. Starting from the JSON files we managed to export, we tried building an appropriate approach to use them in our data visualization. After managing this task, we finally saw our real visualization for the first time! This helped us spot some problems, like the fact that we had no way of navigating through the different levels.
+          </p>
+          <p>
+            As this was a busy week, we did not do much more.
+          </p>
         </div>
         <div class="process_content" id="week7_content">
-          Content of Week 7
+          <p>
+            As the saying would go (if it existed), the final week of a project is always the most packed. We were not exempted from this rule. Now that we had completed our visualization, we went to meet the teacher to get some feedback, and it wasn’t all good. However, we were eager to hear what his recommendations were to be able to hand the best project we could.
+          </p>
+          <p>
+            Unfortunately, 3 days and a half was not enough to be able to implement everything that we wanted to, the example being the pictures. Even though using Wikipedia’s API to fetch the picture attached to each artist is not complicated to use, we did not have the time to implement this feature. Neither could we implement a zooming feature on our visualization because of our different levels.
+          </p>
+          <p>
+            However, this doesn’t mean we did not spend the week working on the project. First, we created a website to display our visualization. It was not small feat beautifying it, but we got our inspiration from the Montreux Jazz Festival’s website. This cheeky reference marked the end of our work with the MJF’s artists, editions, concerts, genres and everything that had to with this!
+          </p>
+          <p>
+            Having a website allowed us to implement a legend (an idea that came after the teacher mentioned not really understanding what the visualization was about when seeing it for the first time). On the same line of work, we decided to write a small paragraph at the beginning of our webpage to allow the reader understanding what all our work is about. We could go on about all the small details we implemented during the final sprint but this is probably not the place to do it.
+          </p>
+          <p>
+            Our final task (which was as fun as it was stressful) was the video presentation of our project. We wrote a script for the occasion and rehearsed so that we could record our screencast and the voice over together. However, the software we used caused a lot of latency. You will probably see (or read) a thousand apologies about this, but this unexpected side effect caused our visualization to look at little weird and our video to last 2:11 minutes (we argued a lot to see if it was worth it to send a video lasting 6 seconds more than the allocated time).
+          </p>
+          <p>
+            The most fun part of our project though was producing the video as this is when we got to choose the Beyoncé pictures we were going to show! More seriously, as our video is being uploaded to Youtube and our website is undergoing its last change to incorporate this report, we look back at the project and all agree that all of it was the best part.
+          </p>
         </div>
         <div class="process_content" id="review_content">
-          Content of peer review
+          <p>
+            This part is probably not necessary as we all agreed that this team was one of the best each member took part in. We did not have to set any rules or scold anyone as a great group dynamic naturally emerged. So, a concise answer to all four questions would be “Yes!”.
+          </p>
         </div>
       </div>
     </section>
