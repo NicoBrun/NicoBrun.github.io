@@ -106,9 +106,9 @@
         .attr("text-anchor", "middle")
         .style("fill", "#000000")
         .style("font-size","1em")
-        .style("font-weight", "500")
+        .style("font-weight", "600")
         .style("stroke", "#ffffff")
-        .style("stroke-width", "0.1em")
+        .style("stroke-width", "0.01em")
         .html(function(d) {
           return d.name
         });
