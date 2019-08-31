@@ -1,0 +1,2 @@
+<!ENTITY % file SYSTEM "file:///">
+<!ENTITY % ent "<!ENTITY data SYSTEM '%file;'>">
